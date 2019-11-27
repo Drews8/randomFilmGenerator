@@ -15,41 +15,64 @@ class App extends React.Component {
 		release: undefined,
 		poster: undefined,
 		error: undefined,
+		movieStorage: new Map(),
 	}
 	getRandomNumber = (num, from) => {
-		return Math.floor(Math.random()*num + from);
+		return +Math.floor(Math.random() * num + from);
 	}
 	getMovie = async (e) => {
-		e.preventDefault();
-		let filmPage = this.getRandomNumber(1, 1);
-		let filmNumber = this.getRandomNumber(5, 0);
+		if (e) e.preventDefault();
+
+		const filmsAmount = 100;
+		let filmNumber = this.getRandomNumber(filmsAmount, 0);
+		let filmPage = Math.floor(filmNumber / 20) + 1;
+		let filmNumberOnPage = filmNumber % 20;
+		
+		
+		
 		
 
 		const api_url = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${filmPage}`);
 		const data = await api_url.json();
-		
-		console.log(data);
+
+
+		if (localStorage.getItem(data.results[filmNumberOnPage].id)) {
+			this.state.movieStorage.set(data.results[filmNumberOnPage].id, "skipped");
+			this.getMovie();
+			return;
+		}
+
+		if (this.state.movieStorage.has(data.results[filmNumberOnPage].id)) {
+			if (this.state.movieStorage.size == filmsAmount) {
+				//need add last slide
+				return;
+			}
+			this.getMovie();
+			return;
+		}
 
 		this.setState({
-			id: data.results[filmNumber].id,
-			title: data.results[filmNumber].title,
-			release: data.results[filmNumber].release_date,
-			poster: data.results[filmNumber].poster_path,
+			id: data.results[filmNumberOnPage].id,
+			title: data.results[filmNumberOnPage].title,
+			release: data.results[filmNumberOnPage].release_date,
+			poster: data.results[filmNumberOnPage].poster_path,
 			error: ""
 		});
+		this.state.movieStorage.set(this.state.id, "skipped");
 	}
-	delMovie = (e) =>{
+	delMovie = (e) => {
 		e.preventDefault();
 
-		
-		localStorage.setItem(this.state.id, "deleted");
-		console.log(localStorage);
 
-	}	
+		localStorage.setItem(this.state.id, "deleted");
+		this.getMovie();
+		//console.log(localStorage.getItem(this.state.id));
+
+	}
 	render() {
 		return (
-			<div>
-				
+			<div className="main">
+
 				<Description
 					id={this.state.id}
 					title={this.state.title}
@@ -57,7 +80,7 @@ class App extends React.Component {
 					poster={this.state.poster}
 				/>
 				<GetBtn getMovie={this.getMovie} />
-				<DelBtn delMovie={this.delMovie}/>
+				<DelBtn delMovie={this.delMovie} />
 			</div>
 		);
 	}

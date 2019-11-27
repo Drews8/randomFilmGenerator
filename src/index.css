@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.main{
+	margin: 0 auto;
+	max-width: 500px;
+	height: 100vh;
+	position: relative;	
+
+	background-color: tomato;
+
+}
+.poster-wrapper{
+	height: 90%;
+}
+.poster-container{
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.poster__img{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 100%;
+	width: auto;
+}
+.poster__descr{
+	z-index: 10;
+	text-align: center;
+}
+
+.getMovie{
+position: absolute;
+left: 50%;
+bottom: 5%;
+transform: translate(-50%, 50%);
+}
+.getMovie__btn{
+
+}
+
+.delMovie{
+	position: absolute;
+	bottom: 5%;
+	right: 0%;
+	transform: translate(-50%, 50%);
+}
