@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/randomFilmGenerator/static/css/main.724138bf.chunk.css",
+    "main.js": "/randomFilmGenerator/static/js/main.9ff84da0.chunk.js",
+    "main.js.map": "/randomFilmGenerator/static/js/main.9ff84da0.chunk.js.map",
+    "runtime-main.js": "/randomFilmGenerator/static/js/runtime-main.b95e61d9.js",
+    "runtime-main.js.map": "/randomFilmGenerator/static/js/runtime-main.b95e61d9.js.map",
+    "static/js/2.e1cee0d3.chunk.js": "/randomFilmGenerator/static/js/2.e1cee0d3.chunk.js",
+    "static/js/2.e1cee0d3.chunk.js.map": "/randomFilmGenerator/static/js/2.e1cee0d3.chunk.js.map",
+    "index.html": "/randomFilmGenerator/index.html",
+    "precache-manifest.730b620f71b60e35bfa2f9be764d07a1.js": "/randomFilmGenerator/precache-manifest.730b620f71b60e35bfa2f9be764d07a1.js",
+    "service-worker.js": "/randomFilmGenerator/service-worker.js",
+    "static/css/main.724138bf.chunk.css.map": "/randomFilmGenerator/static/css/main.724138bf.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b95e61d9.js",
+    "static/js/2.e1cee0d3.chunk.js",
+    "static/css/main.724138bf.chunk.css",
+    "static/js/main.9ff84da0.chunk.js"
+  ]
+}
